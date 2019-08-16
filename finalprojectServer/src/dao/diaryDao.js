@@ -21,7 +21,8 @@ async function selectLastDiary(userIdx){
     WHERE user_idx = ?
     `;
 
-    await mysql.query(sql, [userIdx]);
+    const result = await mysql.query(sql, [userIdx]);
+    return result;
 }
 
 module.exports = {
