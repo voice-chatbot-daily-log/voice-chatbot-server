@@ -5,8 +5,11 @@ async function addLastDiary (req,res){
   try {
       const userIdx = req.body.userIdx;
       const diaryContent = req.body.diaryContent;
+      const diaryYear = req.body.diaryYear;
+      const diaryMonth = req.body.diaryMonth;
+      const diaryDay = req.body.diaryDay;
 
-      await diaryService.addLastDiary(diaryContent,userIdx);
+      await diaryService.addLastDiary(diaryContent,userIdx,diaryYear,diaryMonth,diaryDay);
       response('Success', [], res, 201);
   } catch (error) {
     console.log(error);

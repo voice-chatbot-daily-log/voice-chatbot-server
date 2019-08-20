@@ -1,15 +1,15 @@
 const mysql = require('../library/mysql');
 
-async function insertLastDiary(diaryContent,userIdx){
+async function insertLastDiary(diaryContent,userIdx,diaryYear,diaryMonth,diaryDay){
 
     const sql = `
     INSERT INTO LAST_DIARY
-    (last_diary_content,user_idx)
+    (last_diary_content,user_idx,last_diary_year,last_diary_month,last_diary_day)
     VALUES
-    (?,?)
+    (?,?,?,?,?)
     `;
 
-    await mysql.query(sql, [diaryContent,userIdx]);
+    await mysql.query(sql, [diaryContent,userIdx,diaryYear,diaryMonth,diaryDay]);
 }
 
 async function selectLastDiary(userIdx){
