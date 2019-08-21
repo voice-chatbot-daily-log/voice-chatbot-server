@@ -2,8 +2,8 @@
 const moment = require('moment');
 const diaryDao = require('../dao/diaryDao');
 
-async function addLastDiary(diaryContent,userIdx,diaryYear,diaryMonth,diaryDay){
-    await diaryDao.insertLastDiary(diaryContent,userIdx,diaryYear,diaryMonth,diaryDay);
+async function addLastDiary(diaryContent,userIdx,diaryDate,diaryHashTag){
+    await diaryDao.insertLastDiary(diaryContent,userIdx,diaryDate,diaryHashTag);
 
 }
 
