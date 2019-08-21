@@ -4,7 +4,7 @@ async function insertLastDiary(diaryContent,userIdx,diaryDate,diaryHashTag){
 
     const sql = `
     INSERT INTO LAST_DIARY
-    (last_diary_content,user_idx,last_diary_date,last_diary_hashtag)
+    (last_diary_content,user_idx,last_diary_conDate,last_diary_hashtag)
     VALUES
     (?,?,?,?)
     `;

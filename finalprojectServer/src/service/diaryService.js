@@ -10,7 +10,6 @@ async function addLastDiary(diaryContent,userIdx,diaryDate,diaryHashTag){
 async function getLastDiary(userIdx){
     
     const result = await diaryDao.selectLastDiary(userIdx);
-
     const size = result.length;
 
     for(let i = 0; i<size;i++){
