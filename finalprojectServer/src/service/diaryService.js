@@ -20,8 +20,33 @@ async function getLastDiary(userIdx){
     
 }
 
+async function getLastDiaryByDate(userIdx,diaryDate){
+
+    const result = await diaryDao.selectLastDiaryByDate(userIdx,diaryDate);
+    const size = result.length;
+
+    for(let i = 0; i<size;i++){
+        result[i].last_diary_date = moment(result[i].last_diary_date).format('YYYY년 MM월 DD일');
+    }
+
+    return result;
+}
+
+async function getLastDiaryByHashTag(userIdx,diaryHashTag){
+    const result = await diaryDao.getLastDiaryByHashTag(userIdx,diaryHashTag);
+    const size = result.length;
+
+    for(let i = 0; i<size;i++){
+        result[i].last_diary_date = moment(result[i].last_diary_date).format('YYYY년 MM월 DD일');
+    }
+
+    return result;
+}
+
 
 module.exports = {
     addLastDiary,
     getLastDiary,
+    getLastDiaryByDate,
+    getLastDiaryByHashTag,
 };

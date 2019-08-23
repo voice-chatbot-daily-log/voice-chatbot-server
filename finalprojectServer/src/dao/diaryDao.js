@@ -24,7 +24,35 @@ async function selectLastDiary(userIdx){
     return result;
 }
 
+async function selectLastDiaryByDate(userIdx,diaryDate){
+    const sql = `
+    SELECT
+    last_diary_date,last_diary_content
+    FROM LAST_DIARY
+    WHERE user_idx = ?
+    AND last_diary_conDate = ?
+    `;
+    const result = await mysql.query(sql,[userIdx,diaryDate]);
+    return result;
+}
+
+async function selectLastDiaryByHashTag(userIdx,diaryHashTag){
+    
+    const sql = `
+    SELECT
+    last_diary_date,last_diary_content
+    FROM LAST_DIARY
+    WHERE user_idx = ?
+    AND last_diary_hashtag = ?
+    `;
+
+    const result = await mysql.query(sql,[userIdx,diaryHashTag]);
+    return result;
+}
+
 module.exports = {
     insertLastDiary,
     selectLastDiary,
+    selectLastDiaryByDate,
+    selectLastDiaryByHashTag,
   };
