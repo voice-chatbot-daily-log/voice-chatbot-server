@@ -5,8 +5,8 @@ const router = express.Router();
 const diaryController = require('../controller/diaryController');
 
 router.get('/lastdiarylist/:userIdx',diaryController.getLastDiary);
-router.get('/lastdiary/:userIdx/:diaryDate',diaryController.getLastDiaryByDate);
-router.get('/lastdiary/:userIdx/:diaryHashTag',diaryController.getLastDiaryByHashTag);
+router.get('/search/:userIdx/date/:diaryDate',diaryController.getLastDiaryByDate);
+router.get('/search/:userIdx/hashtag/:diaryHashTag',diaryController.getLastDiaryByHashTag);
 router.post('/save',diaryController.addLastDiary);
 
 module.exports = router;

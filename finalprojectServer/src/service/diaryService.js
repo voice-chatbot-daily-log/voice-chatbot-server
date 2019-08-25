@@ -33,7 +33,7 @@ async function getLastDiaryByDate(userIdx,diaryDate){
 }
 
 async function getLastDiaryByHashTag(userIdx,diaryHashTag){
-    const result = await diaryDao.getLastDiaryByHashTag(userIdx,diaryHashTag);
+    const result = await diaryDao.selectLastDiaryByHashTag(userIdx,diaryHashTag);
     const size = result.length;
 
     for(let i = 0; i<size;i++){
