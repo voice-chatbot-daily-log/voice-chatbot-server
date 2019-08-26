@@ -50,9 +50,33 @@ async function selectLastDiaryByHashTag(userIdx,diaryHashTag){
     return result;
 }
 
+async function insertUserUUID(userUUID){
+
+    const sql = `
+    INSERT INTO USER (user_uuid) VALUES (?)
+    `;
+
+    await mysql.query(sql,[userUUID]);
+
+}
+
+async function selectUserIdx(userUUID){
+    const sql = `
+    SELECT
+    user_idx
+    FROM USER
+    WHERE user_uuid = ?
+    `;
+
+    const result = await mysql.query(sql,[userUUID]);
+    return result;
+}
+
 module.exports = {
     insertLastDiary,
     selectLastDiary,
     selectLastDiaryByDate,
     selectLastDiaryByHashTag,
+    insertUserUUID,
+    selectUserIdx,
   };

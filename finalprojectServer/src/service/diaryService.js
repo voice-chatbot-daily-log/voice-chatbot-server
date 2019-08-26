@@ -43,10 +43,17 @@ async function getLastDiaryByHashTag(userIdx,diaryHashTag){
     return result;
 }
 
+async function addUserUUID(userUUID){
+    await diaryDao.insertUserUUID(userUUID);
+    const result = await diaryDao.selectUserIdx(userUUID);
+
+    return result;
+}
 
 module.exports = {
     addLastDiary,
     getLastDiary,
     getLastDiaryByDate,
     getLastDiaryByHashTag,
+    addUserUUID,
 };

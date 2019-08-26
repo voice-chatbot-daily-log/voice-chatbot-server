@@ -58,6 +58,19 @@ async function getLastDiaryByHashTag(req,res){
   }
 }
 
+async function addUserUUID(req, res){
+  try {
+
+    const userUUID = req.body.userUUID;
+    const result = await diaryService.addUserUUID(userUUID);
+    response('Success',result, res, 200);
+
+  } catch (error) {
+    console.log(error);
+    errorResponse(error.message, res, error.statusCode);
+  }
+}
+
 
 
 
@@ -66,4 +79,5 @@ module.exports = {
     getLastDiary,
     getLastDiaryByDate,
     getLastDiaryByHashTag,
+    addUserUUID,
   };
