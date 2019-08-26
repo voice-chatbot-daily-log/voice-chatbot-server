@@ -13,7 +13,7 @@ async function getLastDiary(userIdx){
     const size = result.length;
 
     for(let i = 0; i<size;i++){
-        result[i].last_diary_date = moment(result[i].last_diary_date).format('YYYY년 MM월 DD일');
+        result[i].last_diary_date = moment(result[i].last_diary_date).format('YYYY년 M월 DD일');
     }
    
     return result;
@@ -26,7 +26,7 @@ async function getLastDiaryByDate(userIdx,diaryDate){
     const size = result.length;
 
     for(let i = 0; i<size;i++){
-        result[i].last_diary_date = moment(result[i].last_diary_date).format('YYYY년 MM월 DD일');
+        result[i].last_diary_date = moment(result[i].last_diary_date).format('YYYY년 M월 DD일');
     }
 
     return result;
@@ -37,7 +37,7 @@ async function getLastDiaryByHashTag(userIdx,diaryHashTag){
     const size = result.length;
 
     for(let i = 0; i<size;i++){
-        result[i].last_diary_date = moment(result[i].last_diary_date).format('YYYY년 MM월 DD일');
+        result[i].last_diary_date = moment(result[i].last_diary_date).format('YYYY년 M월 DD일');
     }
 
     return result;
