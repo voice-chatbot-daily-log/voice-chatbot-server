@@ -47,7 +47,7 @@ async function addUserUUID(userUUID){
     await diaryDao.insertUserUUID(userUUID);
     const result = await diaryDao.selectUserIdx(userUUID);
 
-    return result;
+    return {user_idx:result[0].user_idx}
 }
 
 module.exports = {
