@@ -10,4 +10,6 @@ router.get('/search/:userIdx/date/:diaryDate',diaryController.getLastDiaryByDate
 router.get('/search/:userIdx/hashtag/:diaryHashTag',diaryController.getLastDiaryByHashTag);
 router.post('/save',diaryController.addLastDiary);
 
+router.delete('/',diaryController.removeLastDiary);
+
 module.exports = router;

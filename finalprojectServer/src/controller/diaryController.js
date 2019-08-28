@@ -63,7 +63,7 @@ async function addUserUUID(req, res){
 
     const userUUID = req.body.userUUID;
     const result = await diaryService.addUserUUID(userUUID);
-    response('Success',result, res, 200);
+    response('Success',result, res, 201);
 
   } catch (error) {
     console.log(error);
@@ -71,7 +71,23 @@ async function addUserUUID(req, res){
   }
 }
 
+async function removeLastDiary(req,res){
 
+  try {
+    const flag = req.body.flag;
+    const userIdx = req.body.userIdx;
+    const diaryDate = req.body.diaryDate;
+
+    await diaryService.removeLastDiary(userIdx,diaryDate,flag)
+    response('Success',[], res, 200);
+
+  } catch (error) {
+    console.log(error);
+    errorResponse(error.message, res, error.statusCode);
+  }
+
+
+}
 
 
 module.exports = {
@@ -80,4 +96,5 @@ module.exports = {
     getLastDiaryByDate,
     getLastDiaryByHashTag,
     addUserUUID,
+    removeLastDiary,
   };

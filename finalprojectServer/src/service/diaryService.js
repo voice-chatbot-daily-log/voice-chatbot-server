@@ -50,10 +50,19 @@ async function addUserUUID(userUUID){
     return {user_idx:result[0].user_idx}
 }
 
+async function removeLastDiary(userIdx,diaryDate,flag){
+    if(flag == 0){
+        await diaryDao.deleteAllLastDiary(userIdx);
+    }else{
+        await diaryDao.deleteLastDiary(userIdx,diaryDate);
+    }
+}
+
 module.exports = {
     addLastDiary,
     getLastDiary,
     getLastDiaryByDate,
     getLastDiaryByHashTag,
     addUserUUID,
+    removeLastDiary,
 };

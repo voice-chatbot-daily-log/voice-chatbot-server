@@ -72,6 +72,29 @@ async function selectUserIdx(userUUID){
     return result;
 }
 
+async function deleteLastDiary(userIdx,diaryDate){
+    const sql = `
+    DELETE
+    FROM LAST_DIARY
+    WHERE user_idx = ?
+    AND last_diary_conDate = ?
+    `;
+
+   await mysql.query(sql,[userIdx,diaryDate]);
+   
+}
+
+async function deleteAllLastDiary(userIdx){
+    const sql = `
+    DELETE
+    FROM LAST_DIARY
+    WHERE user_idx = ?
+    `;
+
+   await mysql.query(sql,[userIdx]);
+
+}
+
 module.exports = {
     insertLastDiary,
     selectLastDiary,
@@ -79,4 +102,6 @@ module.exports = {
     selectLastDiaryByHashTag,
     insertUserUUID,
     selectUserIdx,
+    deleteLastDiary,
+    deleteAllLastDiary,
   };
