@@ -78,8 +78,19 @@ async function removeLastDiary(req,res){
     const userIdx = req.body.userIdx;
     const diaryDate = req.body.diaryDate;
 
-    await diaryService.removeLastDiary(userIdx,diaryDate,flag)
-    response('Success',[], res, 200);
+    if(flag == 0){
+      await diaryService.removeLastDiary(userIdx,diaryDate,flag);
+      response('Success',[], res, 200);
+    }else{
+      const result = await diaryService.getLastDiaryByDate(userIdx,diaryDate);
+     
+      if(result.length == 0){
+        response('해당 데이터가 존재하지 않습니다.',[], res, 200);
+      }else{
+        await diaryService.removeLastDiary(userIdx,diaryDate,flag)
+        response('Success',[], res, 200);
+      }
+    }
 
   } catch (error) {
     console.log(error);
