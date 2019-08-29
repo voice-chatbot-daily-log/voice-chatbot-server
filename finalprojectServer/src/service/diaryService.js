@@ -47,9 +47,9 @@ async function getLastDiaryByHashTag(userIdx,diaryHashTag){
 async function addUserUUID(userUUID){
     await diaryDao.insertUserUUID(userUUID);
 
-   // const result = await diaryDao.selectUserIdx(userUUID);
+   const result = await diaryDao.selectUserIdx(userUUID);
 
-  //  return {user_idx:result[0].user_idx}
+   return {user_idx:result[0].user_idx}
 }
 
 async function removeLastDiary(userIdx,diaryDate,flag){
