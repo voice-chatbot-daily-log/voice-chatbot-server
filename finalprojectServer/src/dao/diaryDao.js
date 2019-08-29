@@ -54,9 +54,10 @@ async function insertUserUUID(userUUID){
 
     const sql = `
     INSERT INTO USER (user_uuid) VALUES (?)
+    ON DUPLICATE KEY UPDATE user_uuid = ?
     `;
 
-    await mysql.query(sql,[userUUID]);
+    await mysql.query(sql,[userUUID,userUUID]);
 
 }
 
