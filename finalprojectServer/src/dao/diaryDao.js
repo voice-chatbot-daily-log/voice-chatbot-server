@@ -53,8 +53,9 @@ async function selectLastDiaryByHashTag(userIdx,diaryHashTag){
 async function insertUserUUID(userUUID){
 
     const sql = `
-    INSERT INTO USER (user_uuid) VALUES (?)
-    ON DUPLICATE KEY UPDATE user_uuid = ?
+    INSERT INTO USER (user_uuid) 
+    SELECT ? FROM DUAL 
+    WHERE NOT EXISTS (SELECT * FROM USER WHERE user_uuid = ?)
     `;
 
     await mysql.query(sql,[userUUID,userUUID]);
